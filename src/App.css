@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hindi&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #5372F0, #84C6F4);
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.controls label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.controls select {
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  color: #333;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.controls select:hover {
+  border-color: #5372F0;
+}
+
+.controls select:focus {
+  border-color: #5372F0;
+}
+
+.controls select option {
+  padding: 10px;
+}
+
+.container button {
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  background: #5372F0;
+  align-self: flex-end;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* Added Animation */
+.text-display p {
+  font-size: 24px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 2s steps(40) 1s forwards, fadeIn 1s ease-in-out forwards, scaleUp 0.5s ease-in-out forwards;
+}
+
+/* Keyframes for typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes for fading in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for scaling up */
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 660px) {
+  .container {
+    padding: 20px;
+  }
+
+  .controls select {
+    font-size: 14px;
+  }
+
+  .container button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

@@ -12,27 +12,20 @@ function App() {
   };
 
   // Function to fetch and display the translated message
-  const getHelloMessage = (selectedLanguage) => {
-    const translations = {
-      english: "Hello World",
-      french: "Bonjour le monde",
-      hindi: "नमस्ते संसार",
-      spanish: "Hola Mundo", // Added a Spanish translation
-      german: "Hallo Welt", // Added a German translation
-    };
-
-    const resultElement = document.getElementById('result');
-    
-    // Change the font based on the language
-    if (selectedLanguage === 'hindi') {
-      resultElement.style.fontFamily = "'Noto Sans Hindi', sans-serif";
-    } else {
-      resultElement.style.fontFamily = "'Poppins', sans-serif";
+  const getHelloMessage = async (selectedLanguage) => {
+    try {
+      const response = await fetch(`http://localhost:5000/hello?language=${selectedLanguage}`);
+      if (response.ok) {
+        const data = await response.text();
+        setMessage(data);  // Set the translated message
+        triggerTypingEffect(document.getElementById('result'));  // Trigger the animation
+      } else {
+        setMessage('Translation not available');
+      }
+    } catch (error) {
+      console.error('Error fetching translation:', error);
+      setMessage('Error fetching translation');
     }
-
-    // Check if the selected language has a translation
-    setMessage(translations[selectedLanguage] || translations['english']);
-    triggerTypingEffect(resultElement);
   };
 
   // Trigger the typing animation for the output message
@@ -56,8 +49,8 @@ function App() {
           <option value="english">English</option>
           <option value="french">French</option>
           <option value="hindi">Hindi</option>
-          <option value="spanish">Spanish</option>  {/* Added Spanish option */}
-          <option value="german">German</option>    {/* Added German option */}
+          <option value="spanish">Spanish</option>
+          <option value="german">German</option>
         </select>
       </div>
       <div className="text-display">
